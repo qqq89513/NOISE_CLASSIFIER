@@ -205,7 +205,7 @@ def load_time_domains(dataset_paths: dict,  batch_size=50, verbose=False):
 with open(params.PATH_NOISE_LIST) as json_file:
   dataset_paths = json.load(json_file)
 
-train_x, train_y = load_prepro_noise_dataset(dataset_paths['unbalanced'], batch_size=300, verbose=True)
+train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], batch_size=300, verbose=True)
 train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 1).astype('float32')
 from sklearn.utils import shuffle
 train_x, train_y = shuffle(train_x, train_y)
@@ -242,5 +242,9 @@ model.compile(loss='categorical_crossentropy',
                   metrics=['accuracy'])
 
 # Training
-history_CNN = model.fit(x=train_x, y=train_y, validation_split=0.2,
-                        epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=1)
+# history_CNN = model.fit(x=train_x, y=train_y, validation_split=0.2,
+#                         epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=1)
+
+# model.save_weights('model_0719.h5')
+model.load_weights('model_0719.h5')
+model.call(vi.wavfile_to_examples())

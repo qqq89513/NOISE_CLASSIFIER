@@ -6,17 +6,13 @@ import librosa
 import os, sys, json
 import numpy as np
 import matplotlib.pyplot as plt
-from configparser import ConfigParser
 # Imports DSP module
 if os.getcwd().endswith(('\\NC', '/NC')): os.chdir('..')
 sys.path.insert(1, os.getcwd())
 import vggish_input as vi
 import vggish_params as params
-import tensorflow as tf
+from sklearn.utils import shuffle
 from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Dropout
-from tensorflow.keras.layers import Activation, Flatten, BatchNormalization
 
 def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False):
   '''
@@ -104,7 +100,8 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False)
   dataset_y = np.array(dataset_y)
 
   print(f'\rDataset loaded and FFTed. '
-        f'Total samples:{processed_files}, '
+        f'Total samples:{dataset_x.shape[0]}'
+        f'Total wav files:{processed_files}, '
         f'resampled:{resampled_files}, '
         f'padded:{padded_files}.')
   return (dataset_x, dataset_y)
@@ -207,7 +204,6 @@ with open(params.PATH_NOISE_LIST) as json_file:
 
 train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], batch_size=300, verbose=True)
 train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 1).astype('float32')
-from sklearn.utils import shuffle
 train_x, train_y = shuffle(train_x, train_y)
 
 # This model overfits, I think it's the problem of the dataset and preprocess
@@ -217,6 +213,11 @@ train_x, train_y = shuffle(train_x, train_y)
 # Build model ---------------------------------------------
 BATCH_SIZE = 50
 EPOCHS = 5
+
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Dropout
+from tensorflow.keras.layers import Activation, Flatten, BatchNormalization
 
 model = Sequential()
 

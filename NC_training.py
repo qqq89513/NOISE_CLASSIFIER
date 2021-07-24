@@ -191,10 +191,10 @@ model.compile(loss='categorical_crossentropy',
                   metrics=['accuracy'])
 
 # Training
-ES_callback = EarlyStopping(monitor='val_loss', patience=1, baseline=3)
+ES_callback = EarlyStopping(monitor='val_loss', patience=2, baseline=5, restore_best_weights=True)
 history_CNN = model.fit(
   x=train_x, y=train_y,
-  validation_split=0.3,
+  validation_data=(eval_x, eval_y),
   callbacks=ES_callback,
   epochs=EPOCHS, batch_size=BATCH_SIZE,
   verbose=1)

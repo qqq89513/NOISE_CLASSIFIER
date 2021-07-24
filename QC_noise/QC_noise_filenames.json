@@ -200,31 +200,46 @@
     },
     "eval": {
         "Crowd": {
-            "records": 5,
+            "records": 6,
             "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/269412__lwdickens__crowd-walla-whole-foods-grocery-store-food-court-1.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/336999__tim-kahn__crowds-01.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/403180__inspectorj__ambience-large-crowd-a.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/421715__inspectorj__ambience-food-court-b.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/432331__jentlemen__medium-crowd-murmering.wav"
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/36321__lonemonk__yet-another-bar-crowd-june-2007.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/386761__ken788__crowd-talking.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/410866__nobodyyouknowof__crowd-warmup.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/464497__kaygrum__crowd-talking.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/545756__samuelgremaud__crowd.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/573994__mystudio__museum-crowd1.wav"
             ]
         },
         "House_auto": {
-            "records": 6,
+            "records": 14,
             "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/339673__inspectorj__vacuum-cleaner-a.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/394765__maurice-j-k__vacuum-cleaner.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/430632__inspectorj__vacuum-cleaner-on-idle-off-close-a.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/543838__vero-marengere__hair-dryer.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/hairdryer_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/vacuum_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav"
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/116434__eelke__blenders.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/122799__geodylabs__hair-dryer-slow.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/122820__geodylabs__vacuum-cleaner-moving.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/165566__organicmanpl__hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/181625__ancorapazzo__hand-blender.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/245426__nicholaswyoung2__hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/262455__aliceemily__hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/326975__wingsofirony__hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/350962__nycct-sounddesign__vacuum-cleaner-co.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/429078__leonelmail__hair-dryer-different-speeds.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/459394__samuelgremaud__blender.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/523445__clearwavsound__vacuum-cleaner.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/560504__tosha73__hair-is-dried-with-a-hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/71791__timlaroche__licuadora.wav"
             ]
         },
         "Traffic": {
-            "records": 2,
+            "records": 8,
             "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/carpassingby_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/motorcycle_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav"
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/131259__jcgd2__traffic-noise-in-the-street.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/173154__inchadney__traffic.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/319360__rohanpp786__1-mumbai-traffic.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/345313__embracetheart__city-traffic-outdoor.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/439218__bkowshik__evening-traffic-at-jp-nagar.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/448092__courter__hwy-134-in-burbank-binaural.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/512142__lupalenzuela__paris-traffic.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/570535__klangfabrik__continuous-traffic.wav"
             ]
         }
     }

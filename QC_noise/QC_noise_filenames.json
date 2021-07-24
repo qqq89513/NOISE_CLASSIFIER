@@ -1,8 +1,13 @@
 {
     "train": {
         "Crowd": {
-            "records": 18,
+            "records": 23,
             "filenames": [
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/269412__lwdickens__crowd-walla-whole-foods-grocery-store-food-court-1.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/336999__tim-kahn__crowds-01.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/403180__inspectorj__ambience-large-crowd-a.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/421715__inspectorj__ambience-food-court-b.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/432331__jentlemen__medium-crowd-murmering.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/CROWD-ANGRY-STUDIO-MED.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/CROWD-APP-CHEER-2STUDIO-MED.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Crowd/CROWD-APP-CHEER-3STUDIO-MED.wav",
@@ -24,8 +29,14 @@
             ]
         },
         "House_auto": {
-            "records": 118,
+            "records": 124,
             "filenames": [
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/339673__inspectorj__vacuum-cleaner-a.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/394765__maurice-j-k__vacuum-cleaner.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/430632__inspectorj__vacuum-cleaner-on-idle-off-close-a.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/543838__vero-marengere__hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/hairdryer_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/vacuum_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/Blender/snipped11661.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/Blender/snipped11871.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/House_auto/Blender/snipped12587.wav",
@@ -147,11 +158,13 @@
             ]
         },
         "Traffic": {
-            "records": 33,
+            "records": 35,
             "filenames": [
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/AUTO-FERR12-INT-ACCEL-FST.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/BUS-MCI02-EXT-PULL-AWAY.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/BUS-MCI03-EXT-PU-FAST.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/carpassingby_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/motorcycle_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/snipped10967.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/snipped1147.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Traffic/snipped18928.wav",
@@ -207,11 +220,11 @@
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/vacuum_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav"
             ]
         },
-        "Trrafic": {
+        "Traffic": {
             "records": 2,
             "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Trrafic/carpassingby_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Trrafic/motorcycle_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav"
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/carpassingby_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Traffic/motorcycle_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav"
             ]
         }
     }

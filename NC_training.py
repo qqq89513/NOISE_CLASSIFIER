@@ -6,6 +6,7 @@ import librosa
 import os, sys, json
 import numpy as np
 import matplotlib.pyplot as plt
+from tensorflow.python.training.tracking import base
 import vggish_input as vi
 import vggish_params as params
 from sklearn.utils import shuffle
@@ -149,7 +150,7 @@ train_x, train_y = shuffle(train_x, train_y)
 eval_x, eval_y = load_prepro_noise_dataset(dataset_paths['eval'])
 eval_x = eval_x.reshape(eval_x.shape[0], eval_x.shape[1], eval_x.shape[2], 1).astype('float32')
 eval_x, eval_y = make_cats_equal(eval_x, eval_y)
-train_x, train_y = shuffle(train_x, train_y)
+eval_x, eval_y = shuffle(train_x, train_y)
 
 # This model overfits, I think it's the problem of the dataset and preprocess
 # yamNet gives a good result with AudioSet. Go check it out for its preproessing and model.
@@ -157,12 +158,14 @@ train_x, train_y = shuffle(train_x, train_y)
 #       narrow down the categories taken from AudioSet, to 4 for example.
 # Build model ---------------------------------------------
 BATCH_SIZE = 50
-EPOCHS = 5
+EPOCHS = 10
 
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D, Dropout
-from tensorflow.keras.layers import Activation, Flatten, BatchNormalization
+from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D
+from tensorflow.keras.layers import Activation, Flatten
+from tensorflow.keras.layers import Dropout, BatchNormalization
+from tensorflow.keras.callbacks import EarlyStopping
 
 model = Sequential()
 
@@ -188,9 +191,11 @@ model.compile(loss='categorical_crossentropy',
                   metrics=['accuracy'])
 
 # Training
+ES_callback = EarlyStopping(monitor='val_loss', patience=1, baseline=3)
 history_CNN = model.fit(
   x=train_x, y=train_y,
-  validation_data=(eval_x, eval_y),
+  validation_split=0.3,
+  callbacks=ES_callback,
   epochs=EPOCHS, batch_size=BATCH_SIZE,
   verbose=1)
 

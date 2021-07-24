@@ -14,6 +14,15 @@ import vggish_params as params
 from sklearn.utils import shuffle
 from tensorflow.keras.utils import to_categorical
 
+with open(params.PATH_NOISE_LIST) as json_file:
+  dataset_paths = json.load(json_file)
+
+def num_to_class(num: int, dataset_paths=dataset_paths) -> str:
+  if num < 0 or num > params.NUM_CLASS:
+    raise ValueError
+  total_cats = dataset_paths['train'].keys()
+  return total_cats[num]
+
 def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False):
   '''
     Load the noise dataset and preprocess. Return 2D specturms and one-hot labels.
@@ -100,108 +109,13 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False)
   dataset_y = np.array(dataset_y)
 
   print(f'\rDataset loaded and FFTed. '
-        f'Total samples:{dataset_x.shape[0]}'
+        f'Total samples:{dataset_x.shape[0]}. '
         f'Total wav files:{processed_files}, '
         f'resampled:{resampled_files}, '
         f'padded:{padded_files}.')
   return (dataset_x, dataset_y)
 
-def load_time_domains(dataset_paths: dict,  batch_size=50, verbose=False):
-  '''
-    Load the noise dataset from disk, resample to params.SAMPLE_RATE, padding to SAMPLE_LEN
-    and return 1-D array of time samples and labels.
-
-    Parameters
-    ----------
-    dataset_paths: A dict has following structure
-      {
-        "classA": {"filenames": [path_0, path_1, ...]},
-        "classB": {"filenames": [path_0, path_1, ...]},
-        ...
-      }
-
-    batch_size: The number of files to load from disk at once.
-                 The loop is: load batch_size of wav files, resample and padding.
-
-    verbose: bool, print more info or not
-  '''
-  
-  total_files = 0
-  processed_files = 0  # Eventually, processed will equals to total
-  padded_files = 0     # padded wav counts
-  resampled_files = 0  # resampled wav counts
-  dataset_x = []       # Time domains to each wav
-  dataset_y = []       # labels, one-hot encoded
-
-  # Get total filecounts
-  for cats in dataset_paths:
-    total_files += len(dataset_paths[cats]['filenames'])
-
- # Go through each category
-  for c, cats in enumerate(dataset_paths):
-    filenames = dataset_paths[cats]['filenames']
-    cat_files = len(filenames) # file counts to this category
-    f = 0
-
-    # Go through each file in a category
-    while f < cat_files:
-      # List of time domain samples and sample rate.
-      t_ = []      # t_[i][k]: i for i-th file, k=0 for time samples, k=1 for sample rate
-      f_index = f
-      t_index = 0
-      
-      # Print progress
-      print(f'\rLoading and FFTing category {c+1}/{params.NUM_CLASS}, ', end='')
-      print(f"processed file {processed_files+f+1}/{total_files}...   ", end='')
-      
-      # Batch load wav from disk
-      while f_index-f < batch_size and f_index < cat_files:
-        # Read time domain samples and sample rate from wav
-        # Only resmaple if the sample rate of file is not as specified
-        sample, sr = librosa.load(filenames[f_index], sr=None)
-        t_.append([sample, sr])
-        f_index += 1
-      
-      # Resample and padding
-      while t_index < batch_size and t_index < f_index-f:
-        sample = t_[t_index][0]
-        sr     = t_[t_index][1]
-        
-        # Resample
-        if sr != params.SAMPLE_RATE:
-          if verbose:   print(f'{filenames[f+t_index]} is resmapled from {sr} to {params.SAMPLE_RATE}.')
-          resampled_files += 1
-          sample = librosa.resample(sample, orig_sr=sr, target_sr=params.SAMPLE_RATE)
-        # Pad sample to 10 seconds
-        if sample.shape[0] < SAMPLE_LEN:
-          if verbose:   print(f'{filenames[f+t_index]} is padded from {sample.shape[0]} to {SAMPLE_LEN} samples.')
-          padded_files += 1
-          paddings = SAMPLE_LEN - sample.shape[0]
-          sample = np.pad(sample, pad_width=[0, paddings], mode='constant')
-        
-        dataset_x.append(sample)
-        # Convert to one hot
-        one_hot_en = np.eye(params.NUM_CLASS)[c]
-        dataset_y.append(one_hot_en)
-        t_index += 1
-      
-      f += batch_size
-
-    # Update progress for printing
-    processed_files += cat_files
-
-  dataset_x = np.array(dataset_x)
-  dataset_y = np.array(dataset_y)
-  print(f'\rDataset loaded and FFTed. '
-        f'Total samples:{processed_files}, '
-        f'resampled:{resampled_files}, '
-        f'padded:{padded_files}.')
-  return (dataset_x, dataset_y)
-
 # Load and Proprocess the dataset -------------------------
-with open(params.PATH_NOISE_LIST) as json_file:
-  dataset_paths = json.load(json_file)
-
 train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], batch_size=300, verbose=True)
 train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 1).astype('float32')
 train_x, train_y = shuffle(train_x, train_y)
@@ -248,4 +162,4 @@ model.compile(loss='categorical_crossentropy',
 
 # model.save_weights('model_0719.h5')
 model.load_weights('model_0719.h5')
-model.call(vi.wavfile_to_examples())
+model(train_x[1].reshape(1,96,64,1))

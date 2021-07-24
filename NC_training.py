@@ -6,9 +6,6 @@ import librosa
 import os, sys, json
 import numpy as np
 import matplotlib.pyplot as plt
-# Imports DSP module
-if os.getcwd().endswith(('\\NC', '/NC')): os.chdir('..')
-sys.path.insert(1, os.getcwd())
 import vggish_input as vi
 import vggish_params as params
 from sklearn.utils import shuffle
@@ -17,10 +14,38 @@ from tensorflow.keras.utils import to_categorical
 with open(params.PATH_NOISE_LIST) as json_file:
   dataset_paths = json.load(json_file)
 
+def make_cats_equal(x, y, num=None):
+  num_of_each_cats = np.sum(y, axis=0).astype(np.int64)
+  min_cats_num = np.min(num_of_each_cats)
+  if num is int and (num > min_cats_num or num < 1):
+    raise ValueError(
+      f"num should be in range [1, # of samples of the smallest class], "
+      f"which is [1, {min_cats_num}]")
+
+  ret_x = []
+  ret_y = []
+  for i in range(params.NUM_CLASS):
+    label = to_categorical(i, params.NUM_CLASS)
+    match_to_cat = np.all(y==label, axis=-1)
+    indices_to_be_pick = np.where(match_to_cat)[0]
+    # Generate random index
+    picked = np.random.choice(
+      a=indices_to_be_pick, # random pick size items among a
+      size=min_cats_num,    # picked.shape=size
+      replace=False)        # Non repeated
+    ret_x.extend(x[picked])
+    ret_y.extend(y[picked])
+  
+  ret_x = np.array(ret_x)
+  ret_y = np.array(ret_y)
+  return ret_x, ret_y
+
 def num_to_class(num: int, dataset_paths=dataset_paths) -> str:
-  if num < 0 or num > params.NUM_CLASS:
-    raise ValueError
-  total_cats = dataset_paths['train'].keys()
+  if num < 0 or num >= params.NUM_CLASS:
+    raise ValueError(
+      f"num should be in range [{0}, params.NUM_CLASS], "
+      f"where params.NUM_CLASS={params.NUM_CLASS}")
+  total_cats = list(dataset_paths['train'].keys())
   return total_cats[num]
 
 def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False):
@@ -119,6 +144,7 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False)
 train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], batch_size=300, verbose=True)
 train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 1).astype('float32')
 train_x, train_y = shuffle(train_x, train_y)
+train_x, train_y = make_cats_equal(train_x, train_y)
 
 # This model overfits, I think it's the problem of the dataset and preprocess
 # yamNet gives a good result with AudioSet. Go check it out for its preproessing and model.

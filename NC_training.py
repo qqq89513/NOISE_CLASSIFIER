@@ -150,7 +150,7 @@ train_x, train_y = shuffle(train_x, train_y)
 eval_x, eval_y = load_prepro_noise_dataset(dataset_paths['eval'])
 eval_x = eval_x.reshape(eval_x.shape[0], eval_x.shape[1], eval_x.shape[2], 1).astype('float32')
 eval_x, eval_y = make_cats_equal(eval_x, eval_y)
-eval_x, eval_y = shuffle(train_x, train_y)
+eval_x, eval_y = shuffle(eval_x, eval_y)
 
 # This model overfits, I think it's the problem of the dataset and preprocess
 # yamNet gives a good result with AudioSet. Go check it out for its preproessing and model.

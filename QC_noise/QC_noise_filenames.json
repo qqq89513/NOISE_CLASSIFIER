@@ -1,46 +1,5 @@
 {
     "train": {
-        "Accordion": {
-            "records": 36,
-            "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped10417.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped11120.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped11400.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped12164.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped12727.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped13404.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped1497.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped15022.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped1545.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped16170.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped16445.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped17914.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped18253.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped18480.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped18870.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped19270.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped19470.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped19596.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped20134.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped20321.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped20917.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped21045.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped21380.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped22073.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped3256.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped4723.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped6556.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped6569.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped7482.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped7905.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped8188.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped867.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped8795.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped9259.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped9439.wav",
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/train/Accordion/snipped9618.wav"
-            ]
-        },
         "Crowd": {
             "records": 18,
             "filenames": [
@@ -234,9 +193,18 @@
             ]
         },
         "House_auto": {
-            "records": 1,
+            "records": 3,
             "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/543838__vero-marengere__hair-dryer.wav"
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/543838__vero-marengere__hair-dryer.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/hairdryer_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/vacuum_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav"
+            ]
+        },
+        "Trrafic": {
+            "records": 2,
+            "filenames": [
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Trrafic/carpassingby_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Trrafic/motorcycle_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDVehiclesevaluation.wav"
             ]
         }
     }

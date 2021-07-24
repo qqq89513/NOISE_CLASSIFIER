@@ -143,8 +143,8 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False)
 # Load and Proprocess the dataset -------------------------
 train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], batch_size=300, verbose=True)
 train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 1).astype('float32')
-train_x, train_y = shuffle(train_x, train_y)
 train_x, train_y = make_cats_equal(train_x, train_y)
+train_x, train_y = shuffle(train_x, train_y)
 
 # This model overfits, I think it's the problem of the dataset and preprocess
 # yamNet gives a good result with AudioSet. Go check it out for its preproessing and model.
@@ -165,13 +165,13 @@ model.add(Conv2D(16, kernel_size=(5, 5), # 32 filters of 3x3
           input_shape=(train_x.shape[1], train_x.shape[2], 1)))
 model.add(BatchNormalization())
 model.add(Activation('relu'))
-Dropout(0.3)
+model.add(Dropout(0.3))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Conv2D(32, kernel_size=(4, 4)))
 model.add(BatchNormalization())
 model.add(Activation('relu'))
-Dropout(0.3)
+model.add(Dropout(0.3))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 model.add(Flatten())

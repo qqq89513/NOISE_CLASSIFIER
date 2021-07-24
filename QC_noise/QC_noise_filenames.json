@@ -187,14 +187,21 @@
     },
     "eval": {
         "Crowd": {
-            "records": 1,
+            "records": 5,
             "filenames": [
-                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/360703__eguobyte__large-crowd-medium-distance-stereo.wav"
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/269412__lwdickens__crowd-walla-whole-foods-grocery-store-food-court-1.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/336999__tim-kahn__crowds-01.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/403180__inspectorj__ambience-large-crowd-a.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/421715__inspectorj__ambience-food-court-b.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/Crowd/432331__jentlemen__medium-crowd-murmering.wav"
             ]
         },
         "House_auto": {
-            "records": 3,
+            "records": 6,
             "filenames": [
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/339673__inspectorj__vacuum-cleaner-a.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/394765__maurice-j-k__vacuum-cleaner.wav",
+                "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/430632__inspectorj__vacuum-cleaner-on-idle-off-close-a.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/543838__vero-marengere__hair-dryer.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/hairdryer_add_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav",
                 "D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/eval/House_auto/vacuum_Noise-ReductionDatasetsAUDIOSET_NORMALIZEDhousehold_applienceevalution.wav"

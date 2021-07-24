@@ -146,6 +146,11 @@ train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 
 train_x, train_y = make_cats_equal(train_x, train_y)
 train_x, train_y = shuffle(train_x, train_y)
 
+eval_x, eval_y = load_prepro_noise_dataset(dataset_paths['eval'])
+eval_x = eval_x.reshape(eval_x.shape[0], eval_x.shape[1], eval_x.shape[2], 1).astype('float32')
+eval_x, eval_y = make_cats_equal(eval_x, eval_y)
+train_x, train_y = shuffle(train_x, train_y)
+
 # This model overfits, I think it's the problem of the dataset and preprocess
 # yamNet gives a good result with AudioSet. Go check it out for its preproessing and model.
 # TODO: Instead of training with all 512 categories, 
@@ -183,8 +188,14 @@ model.compile(loss='categorical_crossentropy',
                   metrics=['accuracy'])
 
 # Training
-# history_CNN = model.fit(x=train_x, y=train_y, validation_split=0.2,
-#                         epochs=EPOCHS, batch_size=BATCH_SIZE, verbose=1)
+history_CNN = model.fit(
+  x=train_x, y=train_y,
+  validation_data=(eval_x, eval_y),
+  epochs=EPOCHS, batch_size=BATCH_SIZE,
+  verbose=1)
+
+# model.save_weights('model_0724_3_cats_equal_samples.h5')
+# model.load_weights('model_0724_3_cats_equal_samples.h5')
 
 # model.save_weights('model_0719.h5')
 model.load_weights('model_0719.h5')

@@ -3,7 +3,7 @@
 
 # Imports -------------------------------------------------
 import librosa
-import os, sys, json
+import os, sys, gc, json
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.python.training.tracking import base
@@ -152,6 +152,8 @@ eval_x = eval_x.reshape(eval_x.shape[0], eval_x.shape[1], eval_x.shape[2], 1).as
 eval_x, eval_y = make_cats_equal(eval_x, eval_y)
 eval_x, eval_y = shuffle(eval_x, eval_y)
 
+gc.collect() # Garbage collection
+
 # This model overfits, I think it's the problem of the dataset and preprocess
 # yamNet gives a good result with AudioSet. Go check it out for its preproessing and model.
 # TODO: Instead of training with all 512 categories, 
@@ -168,6 +170,8 @@ from tensorflow.keras.layers import Dropout, BatchNormalization
 from tensorflow.keras.callbacks import EarlyStopping
 
 model = Sequential()
+
+gc.collect() # Garbage collection
 
 model.add(Conv2D(16, kernel_size=(5, 5), # 32 filters of 3x3
           input_shape=(train_x.shape[1], train_x.shape[2], 1)))

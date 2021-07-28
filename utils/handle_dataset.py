@@ -2,6 +2,7 @@
 import numpy as np
 import vggish_input as vi
 import vggish_params as params
+from sklearn.utils import shuffle as shf
 import librosa
 
 def to_categorical_1D(y: int, num_classes: int):
@@ -43,10 +44,10 @@ def num_to_class(num: int, dataset_paths) -> str:
     raise ValueError(
       f"num should be in range [{0}, params.NUM_CLASS], "
       f"where params.NUM_CLASS={params.NUM_CLASS}")
-  total_cats = list(dataset_paths['train'].keys())
+  total_cats = list(dataset_paths['dataset'].keys())
   return total_cats[num]
 
-def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False):
+def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, equal_samples=True, shuffle=True, reshape_x=True, verbose=False):
   '''
     Load the noise dataset and preprocess. Return 2D specturms and one-hot labels.
     Load the noise dataset from disk, resample to params.SAMPLE_RATE, padding to SAMPLE_LEN
@@ -136,4 +137,17 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False)
         f'Total wav files:{processed_files}, '
         f'resampled:{resampled_files}, '
         f'padded:{padded_files}.')
+
+  if shuffle:
+    dataset_x, dataset_y = shf(dataset_x, dataset_y)
+
+  if verbose:
+    print(f"x.shape={dataset_x.shape}")
+    if equal_samples:   print(f"Original samples to different classes={np.sum(dataset_y, axis=0)}")
+  if equal_samples:     dataset_x, dataset_y = make_cats_equal(dataset_x, dataset_y)
+  if verbose:           print(f"Samples to different classes={np.sum(dataset_y, axis=0)}")
+  
+  if reshape_x:
+    dataset_x = dataset_x.reshape(dataset_x.shape[0], dataset_x.shape[1], dataset_x.shape[2], 1).astype('float32')
+
   return (dataset_x, dataset_y)

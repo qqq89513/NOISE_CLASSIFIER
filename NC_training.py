@@ -1,6 +1,3 @@
-# This file should be executed from parent dir, as:
-#   "~$: python ./NC/NC_training.py"
-
 # Imports -------------------------------------------------
 import librosa
 import os, sys, gc, json
@@ -8,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import vggish_input as vi
 import vggish_params as params
-from sklearn.utils import shuffle
 from utils.handle_dataset import load_prepro_noise_dataset
 from utils.handle_dataset import make_cats_equal
 
@@ -16,15 +12,8 @@ with open(params.PATH_NOISE_LIST) as json_file:
   dataset_paths = json.load(json_file)
 
 # Load and Proprocess the dataset -------------------------
-train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], batch_size=300, verbose=True)
-train_x = train_x.reshape(train_x.shape[0], train_x.shape[1], train_x.shape[2], 1).astype('float32')
-train_x, train_y = make_cats_equal(train_x, train_y)
-train_x, train_y = shuffle(train_x, train_y)
-
-eval_x, eval_y = load_prepro_noise_dataset(dataset_paths['eval'])
-eval_x = eval_x.reshape(eval_x.shape[0], eval_x.shape[1], eval_x.shape[2], 1).astype('float32')
-eval_x, eval_y = make_cats_equal(eval_x, eval_y)
-eval_x, eval_y = shuffle(eval_x, eval_y)
+train_x, train_y = load_prepro_noise_dataset(dataset_paths['train'], equal_samples=True, shuffle=True, reshape_x=True)
+eval_x, eval_y = load_prepro_noise_dataset(dataset_paths['eval'], equal_samples=True, shuffle=True, reshape_x=True)
 
 gc.collect() # Garbage collection
 

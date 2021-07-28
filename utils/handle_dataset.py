@@ -3,8 +3,14 @@ import numpy as np
 import vggish_input as vi
 import vggish_params as params
 import librosa
-from tensorflow.keras.utils import to_categorical
 
+def to_categorical_1D(y: int, num_classes: int):
+  if y >= num_classes:
+    raise ValueError(f"y should be in range [0, num_classes), " 
+      f"Given y={y} and num_classes={num_classes}.")
+  labels = np.zeros(num_classes)
+  labels[y] = 1
+  return labels
 
 def make_cats_equal(x, y, num=None):
   num_of_each_cats = np.sum(y, axis=0).astype(np.int64)
@@ -17,7 +23,7 @@ def make_cats_equal(x, y, num=None):
   ret_x = []
   ret_y = []
   for i in range(params.NUM_CLASS):
-    label = to_categorical(i, params.NUM_CLASS)
+    label = to_categorical_1D(i, params.NUM_CLASS)
     match_to_cat = np.all(y==label, axis=-1)
     indices_to_be_pick = np.where(match_to_cat)[0]
     # Generate random index
@@ -112,7 +118,7 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, verbose=False)
         # arr[num_spectrums, num_frames, num_bands] 
         dataset_x.extend(arr)
         # Convert to one hot
-        one_hot_en = to_categorical(c, params.NUM_CLASS)
+        one_hot_en = to_categorical_1D(c, params.NUM_CLASS)
         dataset_y.extend([one_hot_en]*arr.shape[0])
         t_index = t_index + 1
       

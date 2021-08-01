@@ -138,15 +138,16 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, equal_samples=
         f'resampled:{resampled_files}, '
         f'padded:{padded_files}.')
 
-  if shuffle:
-    dataset_x, dataset_y = shf(dataset_x, dataset_y)
-
   if verbose:
     print(f"x.shape={dataset_x.shape}")
     if equal_samples:   print(f"Original samples to different classes={np.sum(dataset_y, axis=0)}")
   if equal_samples:     dataset_x, dataset_y = make_cats_equal(dataset_x, dataset_y)
   if verbose:           print(f"Samples to different classes={np.sum(dataset_y, axis=0)}")
-  
+    
+  if shuffle:
+    dataset_x, dataset_y = shf(dataset_x, dataset_y)
+
+
   if reshape_x:
     dataset_x = dataset_x.reshape(dataset_x.shape[0], dataset_x.shape[1], dataset_x.shape[2], 1).astype('float32')
 

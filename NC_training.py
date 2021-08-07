@@ -36,29 +36,34 @@ model = Sequential()
 
 gc.collect() # Garbage collection
 
-model.add(Conv2D(16, kernel_size=(5, 5), # 32 filters of 3x3
+model.add(Conv2D(16, kernel_size=(4, 4), # 32 filters of 3x3
           input_shape=(train_x.shape[1], train_x.shape[2], 1)))
 model.add(BatchNormalization())
 model.add(Activation('relu'))
-model.add(Dropout(0.3))
 model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.3))
 
 model.add(Conv2D(32, kernel_size=(4, 4)))
 model.add(BatchNormalization())
 model.add(Activation('relu'))
-model.add(Dropout(0.3))
 model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.3))
+
+model.add(Conv2D(16, kernel_size=(4, 4)))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.3))
 
 model.add(Flatten())
 model.add(Dense(params.NUM_CLASS, activation='softmax'))
 
-model.summary()
 model.compile(loss='categorical_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
 
 # Training
-ES_callback = EarlyStopping(monitor='val_loss', patience=2, baseline=5, restore_best_weights=True)
+ES_callback = EarlyStopping(monitor='val_loss', patience=4, baseline=5, restore_best_weights=True)
 history_CNN = model.fit(
   x=train_x, y=train_y,
   validation_data=(eval_x, eval_y),

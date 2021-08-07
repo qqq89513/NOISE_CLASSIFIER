@@ -22,20 +22,20 @@ See vggish_slim.py for more information.
 NUM_CLASS = 3
 
 # Architectural constants.
-NUM_FRAMES = 96  # Frames in input mel-spectrogram patch.
+NUM_FRAMES = 63  # Frames in input mel-spectrogram patch.
 NUM_BANDS = 64  # Frequency bands in input mel-spectrogram patch.
 EMBEDDING_SIZE = 128  # Size of embedding layer.
 
 # Hyperparameters used in feature and example generation.
 SAMPLE_RATE = 16000
-STFT_WINDOW_LENGTH_SECONDS = 0.025
-STFT_HOP_LENGTH_SECONDS = 0.010
+STFT_WINDOW_LENGTH_SECONDS = 0.016
+STFT_HOP_LENGTH_SECONDS = 0.008
 NUM_MEL_BINS = NUM_BANDS
 MEL_MIN_HZ = 125
 MEL_MAX_HZ = 7500
 LOG_OFFSET = 0.01  # Offset used for stabilized log of input mel-spectrogram.
-EXAMPLE_WINDOW_SECONDS = 0.96  # Each example contains 96 10ms frames
-EXAMPLE_HOP_SECONDS = 0.48     # with 50% overlap.
+EXAMPLE_WINDOW_SECONDS = 0.504  # Each example contains 63 frames, each frame is STFT_HOP_LENGTH_SECONDS long
+EXAMPLE_HOP_SECONDS = 0.504     # with 0% overlap.
 
 # Parameters used for embedding postprocessing.
 PCA_EIGEN_VECTORS_NAME = 'pca_eigen_vectors'

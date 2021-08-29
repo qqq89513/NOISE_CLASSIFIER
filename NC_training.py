@@ -25,42 +25,11 @@ gc.collect() # Garbage collection
 BATCH_SIZE = 50
 EPOCHS = 10
 
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, MaxPooling2D
-from tensorflow.keras.layers import Activation, Flatten
-from tensorflow.keras.layers import Dropout, BatchNormalization
 from tensorflow.keras.callbacks import EarlyStopping
+import NC_model
 
-model = Sequential()
-
-gc.collect() # Garbage collection
-
-model.add(Conv2D(16, kernel_size=(4, 4), # 32 filters of 3x3
-          input_shape=(train_x.shape[1], train_x.shape[2], 1)))
-model.add(BatchNormalization())
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.3))
-
-model.add(Conv2D(32, kernel_size=(4, 4)))
-model.add(BatchNormalization())
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.3))
-
-model.add(Conv2D(16, kernel_size=(4, 4)))
-model.add(BatchNormalization())
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.3))
-
-model.add(Flatten())
-model.add(Dense(params.NUM_CLASS, activation='softmax'))
-
-model.compile(loss='categorical_crossentropy',
-                  optimizer='adam',
-                  metrics=['accuracy'])
+# Load model
+model = NC_model.build_model(train_x.shape[1], train_x.shape[2], train_x.shape[3])
 
 # Training
 ES_callback = EarlyStopping(monitor='val_loss', patience=4, baseline=5, restore_best_weights=True)

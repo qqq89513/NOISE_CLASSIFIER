@@ -43,6 +43,10 @@ history_CNN = model.fit(
 # model.save_weights('model_0724_3_cats_equal_samples.h5')
 # model.load_weights('model_0724_3_cats_equal_samples.h5')
 
+model.save('model_0928_3_cats_equal_samples.h5')
+
+class_names = list(dataset_paths['train'].keys())
+
 # Inference example
 predicted = np.array(model(eval_x[230:233]))
 print(f"predicted={predicted}")

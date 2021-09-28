@@ -56,5 +56,5 @@ OUTPUT_TENSOR_NAME = OUTPUT_OP_NAME + ':0'
 AUDIO_EMBEDDING_FEATURE_NAME = 'audio_embedding'
 
 # Paths
-PATH_NOISE_ROOT = 'D:/USER/desktop/Sync/Coding/Integrated_Projects/Noise-Reduction/temp/Brand_New_NC/QC_noise/'
+PATH_NOISE_ROOT = './QC_noise/'
 PATH_NOISE_LIST = './QC_noise/QC_noise_filenames.json'

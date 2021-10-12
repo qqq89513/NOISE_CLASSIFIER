@@ -115,7 +115,7 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, equal_samples=
       # Batch preprocess
       while t_index < batch_size and t_index < f_index-f:
         # Convert to spectrum
-        arr = vi.waveform_to_examples(t_[t_index], params.SAMPLE_RATE)
+        arr, stft_mag, stft_phase = vi.waveform_to_examples(t_[t_index], params.SAMPLE_RATE)
         # arr[num_spectrums, num_frames, num_bands] 
         dataset_x.extend(arr)
         # Convert to one hot

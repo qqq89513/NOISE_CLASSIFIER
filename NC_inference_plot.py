@@ -32,14 +32,15 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
     if type(sound) is str:
         # spectrogram = vi.wavfile_to_examples(sound)
         sound, sr = sf.read(sound, dtype='float32')
-        spectrogram = vi.waveform_to_examples(sound, sr)
+        mel_spectrogram, stft_mag, stft_phase = vi.waveform_to_examples(sound, sr)
     else:
-        spectrogram = vi.waveform_to_examples(sound, sr)
-        spectrogram = np.array(spectrogram)
+        mel_spectrogram, stft_mag, stft_phase = vi.waveform_to_examples(
+            sound, sr)
+        mel_spectrogram = np.array(mel_spectrogram)
 
     model_input_shape = (
-        spectrogram.shape[0], spectrogram.shape[1], spectrogram.shape[2], 1)
-    scores = model(spectrogram.reshape(model_input_shape))
+        mel_spectrogram.shape[0], mel_spectrogram.shape[1], mel_spectrogram.shape[2], 1)
+    scores = model(mel_spectrogram.reshape(model_input_shape))
     scores = np.array(scores)
 
     # Visualize the results.
@@ -56,16 +57,16 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
         plt.plot(sound)
         plt.xlim([0, len(sound)])
 
-        # Plot the log-mel spectrogram
-        # spectrogram_2D = spectrogram.reshape([])
+        # Plot the log-mel mel_spectrogram
+        # mel_spectrogram_2D = mel_spectrogram.reshape([])
         # plt.subplot(3, 1, 2)
-        # plt.imshow(spectrogram.T, aspect='auto', interpolation='nearest', origin='lower')
+        # plt.imshow(mel_spectrogram.T, aspect='auto', interpolation='nearest', origin='lower')
 
         # Plot scores
         # Plot and label the model output scores for the top-scoring classes.
         plt.subplot(3, 1, 3)
         plt.imshow(scores.T, aspect='auto', cmap='binary')
-        # Compensate for the patch_window_seconds (0.96s) context window to align with spectrogram.
+        # Compensate for the patch_window_seconds (0.96s) context window to align with mel_spectrogram.
         patch_padding = (params.EXAMPLE_WINDOW_SECONDS / 2) / \
             params.EXAMPLE_HOP_SECONDS
         plt.xlim([-patch_padding, scores.shape[0] + patch_padding])
@@ -77,17 +78,26 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
     if result_1D:
         scores = np.sum(scores, axis=0)
 
-    return scores
+    return scores, stft_mag, stft_phase
 
 
 if __name__ == '__main__':
 
+    # nc_model = tf.keras.models.load_model(
+    #     'generated\weights\model_0806-02_52c5aec_trainAcc91_evalAcc85.h5')
+
     nc_model = tf.keras.models.load_model(
-        'generated\weights\model_0806-02_52c5aec_trainAcc91_evalAcc85.h5')
+        './model_0928_3_cats_equal_samples.h5')
 
-    sound, sr = sf.read('test_wav/crowd.wav', dtype='float32')
+    sound, sr = sf.read(
+        'test_wav/noisy_voice_long.wav', dtype='float32')
 
-    result = inference(nc_model, sound, sr)
+    result, stft_mag, stft_phase = inference(nc_model, sound, sr)
     print(result)
     index = np.argmax(result)
     print(index)
+
+    # print(stft_mag, stft_mag.shape)
+    # print(stft_phase, stft_phase.shape)
+    print(stft_mag.shape)
+    print(stft_phase.shape)

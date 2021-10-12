@@ -58,7 +58,7 @@ def waveform_to_examples(data, sample_rate):
     data = resampy.resample(data, sample_rate, vggish_params.SAMPLE_RATE)
 
   # Compute log mel spectrogram features.
-  log_mel = mel_features.log_mel_spectrogram(
+  log_mel, STFT_mag, STFT_phase  = mel_features.log_mel_spectrogram(
       data,
       audio_sample_rate=vggish_params.SAMPLE_RATE,
       log_offset=vggish_params.LOG_OFFSET,
@@ -82,8 +82,7 @@ def waveform_to_examples(data, sample_rate):
 
   # print(log_mel_examples.shape)
 
-  return log_mel_examples
-
+  return log_mel_examples, STFT_mag, STFT_phase
 
 def wavfile_to_examples(wav_file):
   """Convenience wrapper around waveform_to_examples() for a common WAV format.

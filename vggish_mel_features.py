@@ -103,7 +103,7 @@ def audio_to_magnitude_db_and_phase(audio, fft_length, hop_length):
     stftaudio_magnitude, stftaudio_phase = librosa.magphase(stftaudio)
 
     stftaudio_magnitude = stftaudio_magnitude[:, :-1]
-    # stftaudio_phase = stftaudio_phase[:, :-1]
+    stftaudio_phase = stftaudio_phase[:, :-1]
 
     # print(stftaudio_magnitude)
 
@@ -111,7 +111,7 @@ def audio_to_magnitude_db_and_phase(audio, fft_length, hop_length):
     #     stftaudio_magnitude, ref=np.max)
 
     # return stftaudio_magnitude_db, stftaudio_phase
-    return stftaudio_magnitude
+    return stftaudio_magnitude, stftaudio_phase
 
 
 def numpy_audio_to_matrix_spectrogram(numpy_audio, fft_length, hop_length):
@@ -119,24 +119,27 @@ def numpy_audio_to_matrix_spectrogram(numpy_audio, fft_length, hop_length):
     span = int(vggish_params.EXAMPLE_WINDOW_SECONDS *
                vggish_params.SAMPLE_RATE)
 
-    m_mag_db = np.zeros((129, 63))
+    m_mag = np.zeros((129, 63))
+    m_phase = np.zeros((129, 63), dtype=complex)
 
     for time in range(0, numpy_audio.shape[0], span):
         start = time
         end = time + span
         data = numpy_audio[start:end]
 
-        m_mag_db_temp = np.zeros((129, 63))
+        m_mag_temp = np.zeros((129, 63))
+        m_phase_temp = np.zeros((129, 63), dtype=complex)
 
         if (data.shape[0] == span):
-          m_mag_db_temp[:, :] = audio_to_magnitude_db_and_phase(
-              data, fft_length, hop_length)
+            m_mag_temp[:, :], m_phase_temp[:, :] = audio_to_magnitude_db_and_phase(
+                data, fft_length, hop_length)
 
-          m_mag_db = np.hstack((m_mag_db, m_mag_db_temp))
+            m_mag = np.hstack((m_mag, m_mag_temp))
+            m_phase = np.hstack((m_phase, m_phase_temp))
 
-    # print(m_mag_db[:, 63:])
+    # print(m_mag[:, 63:])
 
-    return (m_mag_db[:, 63:])
+    return (m_mag[:, 63:], m_phase[:, 63:])
 
 
 # Mel spectrum constants and functions.
@@ -270,15 +273,15 @@ def log_mel_spectrogram(data,
 
     # print(spectrogram.shape)
 
-    spectrogram = numpy_audio_to_matrix_spectrogram(
+    stft_mag, stft_phase = numpy_audio_to_matrix_spectrogram(
         data,
         fft_length=fft_length,
         hop_length=hop_length_samples)
-    
-    print(np.transpose(spectrogram).shape)
 
-    mel_spectrogram = np.dot(np.transpose(spectrogram), spectrogram_to_mel_matrix(
-        num_spectrogram_bins=np.transpose(spectrogram).shape[1],
+    # print(np.transpose(stft_mag).shape)
+
+    mel_spectrogram = np.dot(np.transpose(stft_mag), spectrogram_to_mel_matrix(
+        num_spectrogram_bins=np.transpose(stft_mag).shape[1],
         audio_sample_rate=audio_sample_rate, **kwargs))
 
-    return np.log(mel_spectrogram + log_offset)
+    return np.log(mel_spectrogram + log_offset), stft_mag, stft_phase

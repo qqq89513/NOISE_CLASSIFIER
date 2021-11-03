@@ -133,6 +133,7 @@ def load_prepro_noise_dataset(dataset_paths: dict, batch_size=50, equal_samples=
   dataset_y = np.array(dataset_y)
 
   print(f'\rDataset loaded and FFTed. '
+        f'{dataset_x.shape}'
         f'Total samples:{dataset_x.shape[0]}. '
         f'Sample shape:{dataset_x.shape[1:]}. '
         f'Total wav files:{processed_files}, '

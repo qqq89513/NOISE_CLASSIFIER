@@ -64,7 +64,7 @@ def start_parsing():
     # The splits of the noise dataset
     splits_noise = ["train", "eval"]
     # Noise splits paths
-    noise_paths = [params.PATH_NOISE_ROOT + split for split in splits_noise]
+    noise_paths = [params.PATH_NOISE_ROOT + "tmp/" + split for split in splits_noise]
     parse_noise_dir(splits_noise, noise_paths)
 
 

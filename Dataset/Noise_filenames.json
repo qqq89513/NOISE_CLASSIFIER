@@ -1,0 +1,94 @@
+{
+    "train": {
+        "Household_Appliance": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/Household_Appliance/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_5_noisy_voice_long.wav"
+            ]
+        },
+        "TVnRadio": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/TVnRadio/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/TVnRadio/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/TVnRadio/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/TVnRadio/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/TVnRadio/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/TVnRadio/voice_5_noisy_voice_long.wav"
+            ]
+        },
+        "Vechicles": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/Vechicles/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_5_noisy_voice_long.wav"
+            ]
+        },
+        "Verbal_Human": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/Verbal_Human/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_5_noisy_voice_long.wav"
+            ]
+        }
+    },
+    "eval": {
+        "Household_Appliance": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/eval/Household_Appliance/-10_noisy_voice_long.wav",
+                "./Dataset/eval/Household_Appliance/-5_noisy_voice_long.wav",
+                "./Dataset/eval/Household_Appliance/0_noisy_voice_long.wav",
+                "./Dataset/eval/Household_Appliance/10_noisy_voice_long.wav",
+                "./Dataset/eval/Household_Appliance/15_noisy_voice_long.wav",
+                "./Dataset/eval/Household_Appliance/5_noisy_voice_long.wav"
+            ]
+        },
+        "TVnRadio": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/eval/TVnRadio/-10_noisy_voice_long.wav",
+                "./Dataset/eval/TVnRadio/-5_noisy_voice_long.wav",
+                "./Dataset/eval/TVnRadio/0_noisy_voice_long.wav",
+                "./Dataset/eval/TVnRadio/10_noisy_voice_long.wav",
+                "./Dataset/eval/TVnRadio/15_noisy_voice_long.wav",
+                "./Dataset/eval/TVnRadio/5_noisy_voice_long.wav"
+            ]
+        },
+        "Vechicles": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/eval/Vechicles/-10_noisy_voice_long.wav",
+                "./Dataset/eval/Vechicles/-5_noisy_voice_long.wav",
+                "./Dataset/eval/Vechicles/0_noisy_voice_long.wav",
+                "./Dataset/eval/Vechicles/10_noisy_voice_long.wav",
+                "./Dataset/eval/Vechicles/15_noisy_voice_long.wav",
+                "./Dataset/eval/Vechicles/5_noisy_voice_long.wav"
+            ]
+        },
+        "Verbal_Human": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/eval/Verbal_Human/-10_noisy_voice_long.wav",
+                "./Dataset/eval/Verbal_Human/-5_noisy_voice_long.wav",
+                "./Dataset/eval/Verbal_Human/0_noisy_voice_long.wav",
+                "./Dataset/eval/Verbal_Human/10_noisy_voice_long.wav",
+                "./Dataset/eval/Verbal_Human/15_noisy_voice_long.wav",
+                "./Dataset/eval/Verbal_Human/5_noisy_voice_long.wav"
+            ]
+        }
+    }
+}

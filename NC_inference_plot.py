@@ -5,7 +5,6 @@ import soundfile as sf
 import vggish_params as params
 import tensorflow as tf
 import json
-import resampy
 
 
 def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, ):
@@ -32,7 +31,9 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
     if type(sound) is str:
         # spectrogram = vi.wavfile_to_examples(sound)
         sound, sr = sf.read(sound, dtype='float32')
-        mel_spectrogram, stft_mag, stft_phase = vi.waveform_to_examples(sound, sr)
+        # Extract mel spectrogram for NC, stft magnitude spectrogram and phase for DDAE
+        mel_spectrogram, stft_mag, stft_phase = vi.waveform_to_examples(
+            sound, sr)
     else:
         mel_spectrogram, stft_mag, stft_phase = vi.waveform_to_examples(
             sound, sr)
@@ -78,14 +79,11 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
     if result_1D:
         scores = np.sum(scores, axis=0)
 
+    # Extract stft magnitude spectrogram and phase for DDAE
     return scores, stft_mag, stft_phase
 
 
 if __name__ == '__main__':
-
-    # nc_model = tf.keras.models.load_model(
-    #     'generated\weights\model_0806-02_52c5aec_trainAcc91_evalAcc85.h5')
-
     nc_model = tf.keras.models.load_model(
         './model_0928_3_cats_equal_samples.h5')
 
@@ -96,8 +94,5 @@ if __name__ == '__main__':
     print(result)
     index = np.argmax(result)
     print(index)
-
-    # print(stft_mag, stft_mag.shape)
-    # print(stft_phase, stft_phase.shape)
     print(stft_mag.shape)
     print(stft_phase.shape)

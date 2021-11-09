@@ -19,7 +19,6 @@ See vggish_slim.py for more information.
 """
 
 # Number of classes
-# NUM_CLASS = 3
 NUM_CLASS = 4
 
 # Architectural constants.

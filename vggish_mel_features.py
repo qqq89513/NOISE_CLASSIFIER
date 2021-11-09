@@ -105,30 +105,28 @@ def audio_to_magnitude_db_and_phase(audio, fft_length, hop_length):
     stftaudio_magnitude = stftaudio_magnitude[:, :-1]
     stftaudio_phase = stftaudio_phase[:, :-1]
 
-    # print(stftaudio_magnitude)
-
-    # stftaudio_magnitude_db = librosa.amplitude_to_db(
-    #     stftaudio_magnitude, ref=np.max)
-
-    # return stftaudio_magnitude_db, stftaudio_phase
     return stftaudio_magnitude, stftaudio_phase
 
 
 def numpy_audio_to_matrix_spectrogram(numpy_audio, fft_length, hop_length):
-
+    # 0.054 * 16000 = 8064 (samples)
     span = int(vggish_params.EXAMPLE_WINDOW_SECONDS *
                vggish_params.SAMPLE_RATE)
 
-    m_mag = np.zeros((129, 63))
-    m_phase = np.zeros((129, 63), dtype=complex)
+    freq_resolution = fft_length / 2 + 1
+    frames = (span - fft_length) / hop_length + 2
+  
+    # Create zeros for initiate an array
+    m_mag = np.zeros((freq_resolution, frames))
+    m_phase = np.zeros((freq_resolution, frames), dtype=complex)
 
     for time in range(0, numpy_audio.shape[0], span):
         start = time
         end = time + span
         data = numpy_audio[start:end]
 
-        m_mag_temp = np.zeros((129, 63))
-        m_phase_temp = np.zeros((129, 63), dtype=complex)
+        m_mag_temp = np.zeros((freq_resolution, frames))
+        m_phase_temp = np.zeros((freq_resolution, frames), dtype=complex)
 
         if (data.shape[0] == span):
             m_mag_temp[:, :], m_phase_temp[:, :] = audio_to_magnitude_db_and_phase(
@@ -137,9 +135,8 @@ def numpy_audio_to_matrix_spectrogram(numpy_audio, fft_length, hop_length):
             m_mag = np.hstack((m_mag, m_mag_temp))
             m_phase = np.hstack((m_phase, m_phase_temp))
 
-    # print(m_mag[:, 63:])
-
-    return (m_mag[:, 63:], m_phase[:, 63:])
+    # Start from [:, frames:] to skip the first frame (which is zeros)
+    return (m_mag[:, frames:], m_phase[:, frames:])
 
 
 # Mel spectrum constants and functions.
@@ -264,14 +261,6 @@ def log_mel_spectrogram(data,
     window_length_samples = int(round(audio_sample_rate * window_length_secs))
     hop_length_samples = int(round(audio_sample_rate * hop_length_secs))
     fft_length = 2 ** int(np.ceil(np.log(window_length_samples) / np.log(2.0)))
-
-    # spectrogram = stft_magnitude(
-    #     data,
-    #     fft_length=fft_length,
-    #     hop_length=hop_length_samples,
-    #     window_length=window_length_samples)
-
-    # print(spectrogram.shape)
 
     stft_mag, stft_phase = numpy_audio_to_matrix_spectrogram(
         data,

@@ -1,0 +1,72 @@
+{
+    "train": {
+        "Household_Appliance": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/Household_Appliance/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/Household_Appliance/voice_5_noisy_voice_long.wav"
+            ]
+        },
+        "Vechicles": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/Vechicles/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/Vechicles/voice_5_noisy_voice_long.wav"
+            ]
+        },
+        "Verbal_Human": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/train/Verbal_Human/voice_-10_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_-5_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_0_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_10_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_15_noisy_voice_long.wav",
+                "./Dataset/train/Verbal_Human/voice_5_noisy_voice_long.wav"
+            ]
+        }
+    },
+    "test": {
+        "Household_Appliance": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/test/Household_Appliance/-10_noisy_voice_long.wav",
+                "./Dataset/test/Household_Appliance/-5_noisy_voice_long.wav",
+                "./Dataset/test/Household_Appliance/0_noisy_voice_long.wav",
+                "./Dataset/test/Household_Appliance/10_noisy_voice_long.wav",
+                "./Dataset/test/Household_Appliance/15_noisy_voice_long.wav",
+                "./Dataset/test/Household_Appliance/5_noisy_voice_long.wav"
+            ]
+        },
+        "Vechicles": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/test/Vechicles/-10_noisy_voice_long.wav",
+                "./Dataset/test/Vechicles/-5_noisy_voice_long.wav",
+                "./Dataset/test/Vechicles/0_noisy_voice_long.wav",
+                "./Dataset/test/Vechicles/10_noisy_voice_long.wav",
+                "./Dataset/test/Vechicles/15_noisy_voice_long.wav",
+                "./Dataset/test/Vechicles/5_noisy_voice_long.wav"
+            ]
+        },
+        "Verbal_Human": {
+            "records": 6,
+            "filenames": [
+                "./Dataset/test/Verbal_Human/-10_noisy_voice_long.wav",
+                "./Dataset/test/Verbal_Human/-5_noisy_voice_long.wav",
+                "./Dataset/test/Verbal_Human/0_noisy_voice_long.wav",
+                "./Dataset/test/Verbal_Human/10_noisy_voice_long.wav",
+                "./Dataset/test/Verbal_Human/15_noisy_voice_long.wav",
+                "./Dataset/test/Verbal_Human/5_noisy_voice_long.wav"
+            ]
+        }
+    }
+}

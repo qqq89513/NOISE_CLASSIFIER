@@ -113,8 +113,8 @@ def numpy_audio_to_matrix_spectrogram(numpy_audio, fft_length, hop_length):
     span = int(vggish_params.EXAMPLE_WINDOW_SECONDS *
                vggish_params.SAMPLE_RATE)
 
-    freq_resolution = fft_length / 2 + 1
-    frames = (span - fft_length) / hop_length + 2
+    freq_resolution = int(fft_length / 2 + 1)
+    frames = int((span - fft_length) / hop_length + 2)
   
     # Create zeros for initiate an array
     m_mag = np.zeros((freq_resolution, frames))

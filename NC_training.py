@@ -15,7 +15,7 @@ with open(params.PATH_NOISE_LIST) as json_file:
 train_x, train_y = load_prepro_noise_dataset(
     dataset_paths['train'], equal_samples=True, shuffle=True, reshape_x=True, verbose=True)
 eval_x, eval_y = load_prepro_noise_dataset(
-    dataset_paths['eval'], equal_samples=True, shuffle=True, reshape_x=True, verbose=True)
+    dataset_paths['test'], equal_samples=True, shuffle=True, reshape_x=True, verbose=True)
 
 gc.collect() # Garbage collection
 

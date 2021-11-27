@@ -30,9 +30,9 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
   if type(sound) is str:
     # spectrogram = vi.wavfile_to_examples(sound)
     sound, sr = sf.read(sound, dtype='float32')
-    spectrogram = vi.waveform_to_examples(sound, sr)
+    spectrogram, spect_unframed = vi.waveform_to_examples(sound, sr)
   else:
-    spectrogram = vi.waveform_to_examples(sound, sr)
+    spectrogram, spect_unframed = vi.waveform_to_examples(sound, sr)
     spectrogram = np.array(spectrogram)
   
   model_input_shape = (spectrogram.shape[0], spectrogram.shape[1], spectrogram.shape[2], 1)
@@ -50,13 +50,15 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
 
     # Plot the waveform.
     plt.subplot(3, 1, 1)
-    plt.plot(sound)
-    plt.xlim([0, len(sound)])
+    if(len(sound.shape) == 2): sound = np.mean(sound, axis=1) # turn into mono channel
+    sample_cnts = len(sound)
+    time_axis = np.linspace(0, 1/sr*sample_cnts, sample_cnts)
+    plt.plot(time_axis, sound)
+    plt.xlim([0, max(time_axis)])
 
     # Plot the log-mel spectrogram
-    # spectrogram_2D = spectrogram.reshape([])
-    # plt.subplot(3, 1, 2)
-    # plt.imshow(spectrogram.T, aspect='auto', interpolation='nearest', origin='lower')
+    plt.subplot(3, 1, 2)
+    plt.imshow(spect_unframed.T, aspect='auto', interpolation='nearest', origin='lower')
 
     # Plot scores
     # Plot and label the model output scores for the top-scoring classes.
@@ -69,6 +71,8 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
     plt.yticks(range(len(class_names)), class_names)
     _ = plt.ylim(-0.5 + np.array([len(class_names), 0]))
 
+    plt.show()
+
   # Make inference result as 1D array
   if result_1D:
     scores = np.sum(scores, axis=0)
@@ -78,4 +82,4 @@ def inference(model, sound, sr=params.SAMPLE_RATE, result_1D=True, plot=False, )
 
 if __name__ == '__main__':
   nc_model = tf.keras.models.load_model('generated\weights\model_0806-02_52c5aec_trainAcc91_evalAcc85.h5')
-  print(inference(nc_model, 'crowd.wav'))
+  print(inference(nc_model, 'test_wav/crowd.wav', plot=True))

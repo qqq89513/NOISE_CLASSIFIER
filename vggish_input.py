@@ -49,6 +49,8 @@ def waveform_to_examples(data, sample_rate):
     a sequence of examples, each of which contains a patch of log mel
     spectrogram, covering num_frames frames of audio and num_bands mel frequency
     bands, where the frame length is vggish_params.STFT_HOP_LENGTH_SECONDS.
+
+    2-D np.array of shape [num_frames, num_bands]. Non sliced version of 1st return value
   """
   # Convert to mono.
   if len(data.shape) > 1:
@@ -78,7 +80,7 @@ def waveform_to_examples(data, sample_rate):
       log_mel,
       window_length=example_window_length,
       hop_length=example_hop_length)
-  return log_mel_examples
+  return log_mel_examples, log_mel
 
 
 def wavfile_to_examples(wav_file):
